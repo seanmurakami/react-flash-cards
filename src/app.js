@@ -1,24 +1,33 @@
 import React from 'react'
+import CreateCard from './create-card'
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  componentDidMount() {
+    document.querySelector('#createFlash').addEventListener('submit', (e) => {
+      e.preventDefault()
+      const flashcard = {
+        question: document.querySelector('[type=question]').value,
+        answer: document.querySelector('[type=answer]').value
+      }
+      const { question, answer } = flashcard
+      if (!question || !answer) {
+        alert('Please enter content in both fields')
+      }
+      else {
+        const flashCards = JSON.parse(localStorage.getItem('flashCards')) || []
+        flashCards.push(flashcard)
+        localStorage.setItem('flashCards', JSON.stringify(flashCards))
+        e.target.reset()
+      }
+    })
+  }
   render() {
     return (
-      <div className="d-flex justify-content-center">
-        <form className="bg-light border border-dark rounded mt-5 p-4" style={{width: "35rem"}}>
-          <h2 className="d-flex justify-content-center">Create a Flash Card</h2>
-          <div className="form-group">
-            <label>Question</label>
-            <input type="question" className="form-control" placeholder="Enter question"></input>
-          </div>
-          <div className="form-group">
-            <label>Answer</label>
-            <input type="question" className="form-control" placeholder="Enter answer"></input>
-          </div>
-          <div className="d-flex justify-content-center">
-            <button type="submit" className="btn btn-primary">Save</button>
-          </div>
-        </form>
-      </div>
+      <CreateCard />
     )
   }
 }
