@@ -23,9 +23,8 @@ export default class CreateCard extends React.Component {
       alert('Please enter content in both fields')
     }
     else {
-      const flashCards = JSON.parse(localStorage.getItem('flashCards')) || []
-      flashCards.push(this.state)
-      localStorage.setItem('flashCards', JSON.stringify(flashCards))
+      this.props.addCard(this.state)
+      this.setState({question: '', answer: ''})
       e.target.reset()
     }
   }
