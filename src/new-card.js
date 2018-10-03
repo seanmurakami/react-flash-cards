@@ -2,7 +2,7 @@ import React from 'react'
 
 const styles = {
   background: {
-    width: '32rem'
+    width: '40rem'
   }
 }
 

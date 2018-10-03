@@ -19,8 +19,8 @@ export default function Homepage(props) {
   }
   else {
     return (
-      <div className="container">
-        <div className="d-flex justify-content-center row">
+      <div className="mx-4">
+        <div className="row">
           <RenderCard addCard={props.flashcards} />
         </div>
       </div>

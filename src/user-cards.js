@@ -2,7 +2,8 @@ import React from 'react'
 
 const styles = {
   width: {
-    width: '20rem'
+    width: '20rem',
+    height: '12rem'
   }
 }
 

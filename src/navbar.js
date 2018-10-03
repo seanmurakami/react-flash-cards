@@ -11,7 +11,7 @@ export default function Navbar() {
     <nav className="navbar navbar-dark bg-primary navbar-expand mb-3">
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav" style={ styles.font }>
-          <a className="nav-item nav-link active" href="#cards">Cards <span className="sr-only">(current)</span></a>
+          <a className="nav-item nav-link" href="#cards">Cards</a>
           <a className="nav-item nav-link" href="#new">New</a>
         </div>
       </div>
