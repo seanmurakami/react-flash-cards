@@ -1,4 +1,5 @@
 import React from 'react'
+import RenderCard from './user-cards'
 
 export default function Homepage(props) {
   if (props.flashCount === 0) {
@@ -13,7 +14,11 @@ export default function Homepage(props) {
   }
   else {
     return (
-      <h1>Hello</h1>
+      <div className="container">
+        <div className="row">
+          <RenderCard addCard={props.flashcards} />
+        </div>
+      </div>
     )
   }
 }

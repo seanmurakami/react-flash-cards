@@ -8,7 +8,7 @@ const styles = {
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-dark bg-primary navbar-expand">
+    <nav className="navbar navbar-dark bg-primary navbar-expand mb-3">
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav" style={ styles.font }>
           <a className="nav-item nav-link active" href="#cards">Cards <span className="sr-only">(current)</span></a>

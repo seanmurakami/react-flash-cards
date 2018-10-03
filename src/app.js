@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       flashcards: [],
-      view: { view: '' }
+      view: { path: '' }
     }
     this.addCard = this.addCard.bind(this)
     this.newCard = this.newCard.bind(this)
@@ -17,7 +17,7 @@ export default class App extends React.Component {
   renderApp() {
     const { flashcards, view } = this.state
     if (this.state.view.path === 'cards' || !view.path) {
-      return (<Homepage onClick={ this.newCard } flashCount={ flashcards.length }/>)
+      return (<Homepage onClick={ this.newCard } flashCount={ flashcards.length } flashcards={ flashcards }/>)
     }
     else {
       return (<CreateCard addCard={ this.addCard }/>)
