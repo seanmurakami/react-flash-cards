@@ -6,7 +6,7 @@ export default function Homepage(props) {
       <div className="container">
         <div className="text-center">
           <h2 className="my-5">You have no flash cards</h2>
-          <button type="submit" className="btn btn-primary">Make One</button>
+          <button onClick={ props.onClick } type="submit" className="btn btn-primary">Make One</button>
         </div>
       </div>
     )
