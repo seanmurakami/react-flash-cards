@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super(props)
     const { path } = hash.parse(location.hash)
     const getData = localStorage.getItem('flashcard-state')
-    const appState = JSON.parse(getData) || []
+    const appState = JSON.parse(getData) || {}
     this.state = {
       flashcards: appState.flashcards || [],
       view: { path }
