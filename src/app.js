@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import CreateCard from './card'
+import CreateCard from './new-card'
 import Navbar from './navbar'
 import Homepage from './home'
 import hash from './hash'
@@ -26,6 +26,7 @@ export default class App extends React.Component {
     const newFlashcard = [...this.state.flashcards]
     newFlashcard.push(flashcard)
     this.setState({flashcards: newFlashcard})
+    document.location.assign('http://localhost:3000/#cards')
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
