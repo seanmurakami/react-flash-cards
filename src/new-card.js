@@ -2,7 +2,7 @@ import React from 'react'
 
 const styles = {
   background: {
-    width: '32rem'
+    width: '40rem'
   }
 }
 
@@ -37,7 +37,6 @@ export default class CreateCard extends React.Component {
       <div className="d-flex justify-content-center">
         <form
           onSubmit={ this.handleSave }
-          id="createFlash"
           className="bg-light rounded mt-5 p-4"
           style={styles.background}>
           <h2 className="d-flex justify-content-center">Create a Flash Card</h2>
