@@ -1,15 +1,19 @@
 import React from 'react'
 
-const styles = {
-  position: {
-    width: '25rem'
+export default function Homepage(props) {
+  if (props.flashCount === 0) {
+    return (
+      <div className="container">
+        <div className="text-center">
+          <h2 className="my-5">You have no flash cards</h2>
+          <button type="submit" className="btn btn-primary">Make One</button>
+        </div>
+      </div>
+    )
   }
-}
-export default function Homepage() {
-  return (
-    <div className="mx-auto text-center" style={ styles.position }>
-      <h2 className="my-5">You have no flash cards</h2>
-      <button type="submit" className="btn btn-primary">Make One</button>
-    </div>
-  )
+  else {
+    return (
+      <h1>Hello</h1>
+    )
+  }
 }

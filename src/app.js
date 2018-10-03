@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import CreateCard from './create-card'
+import CreateCard from './card'
 import Navbar from './navbar'
 import Homepage from './home'
 
@@ -9,11 +9,19 @@ export default class App extends React.Component {
     this.state = {
       flashcards: [],
       view: {
-        path: null,
-        params: null
+        path: 'cards'
       }
     }
     this.addCard = this.addCard.bind(this)
+    this.renderApp = this.renderApp.bind(this)
+  }
+  renderApp() {
+    if (this.state.view.path === 'cards') {
+      return (<Homepage flashCount={ this.state.flashcards.length }/>)
+    }
+    else {
+      return (<CreateCard addCard={ this.addCard }/>)
+    }
   }
   addCard(flashcard) {
     const newFlashcard = [...this.state.flashcards]
@@ -24,8 +32,7 @@ export default class App extends React.Component {
     return (
       <Fragment>
         <Navbar />
-        <CreateCard addCard={ this.addCard }/>
-        <Homepage />
+        { this.renderApp() }
       </Fragment>
     )
   }
