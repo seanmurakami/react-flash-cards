@@ -1,12 +1,17 @@
 import React, { Fragment } from 'react'
 import CreateCard from './create-card'
 import Navbar from './navbar'
+import Homepage from './home'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      flashcards: []
+      flashcards: [],
+      view: {
+        path: null,
+        params: null
+      }
     }
     this.addCard = this.addCard.bind(this)
   }
@@ -20,6 +25,7 @@ export default class App extends React.Component {
       <Fragment>
         <Navbar />
         <CreateCard addCard={ this.addCard }/>
+        <Homepage />
       </Fragment>
     )
   }
