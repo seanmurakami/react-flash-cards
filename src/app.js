@@ -12,12 +12,11 @@ export default class App extends React.Component {
       view: { path: '' }
     }
     this.addCard = this.addCard.bind(this)
-    this.newCard = this.newCard.bind(this)
   }
   renderApp() {
     const { flashcards, view } = this.state
     if (this.state.view.path === 'cards' || !view.path) {
-      return (<Homepage onClick={ this.newCard } flashCount={ flashcards.length } flashcards={ flashcards }/>)
+      return (<Homepage flashCount={ flashcards.length } flashcards={ flashcards }/>)
     }
     else {
       return (<CreateCard addCard={ this.addCard }/>)
@@ -27,9 +26,6 @@ export default class App extends React.Component {
     const newFlashcard = [...this.state.flashcards]
     newFlashcard.push(flashcard)
     this.setState({flashcards: newFlashcard})
-  }
-  newCard() {
-    this.setState({view: {path: 'new'}})
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {

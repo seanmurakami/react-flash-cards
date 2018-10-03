@@ -1,13 +1,18 @@
 import React from 'react'
 import RenderCard from './user-cards'
 
+const styles = {
+  font: {
+    fontSize: '1.5rem'
+  }
+}
 export default function Homepage(props) {
   if (props.flashCount === 0) {
     return (
       <div className="container">
         <div className="text-center">
           <h2 className="my-5">You have no flash cards</h2>
-          <button onClick={ props.onClick } type="submit" className="btn btn-primary">Make One</button>
+          <a href="#new" className="font-weight-light btn btn-primary" style={ styles.font }>Make One</a>
         </div>
       </div>
     )
@@ -15,7 +20,7 @@ export default function Homepage(props) {
   else {
     return (
       <div className="container">
-        <div className="row">
+        <div className="d-flex justify-content-center row">
           <RenderCard addCard={props.flashcards} />
         </div>
       </div>
