@@ -7,15 +7,16 @@ import hash from './hash'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
+    const { path } = hash.parse(location.hash)
     this.state = {
       flashcards: [],
-      view: { path: '' }
+      view: { path }
     }
     this.addCard = this.addCard.bind(this)
   }
   renderApp() {
     const { flashcards, view } = this.state
-    if (this.state.view.path === 'cards' || !view.path) {
+    if (view.path === 'cards' || !view.path) {
       return (<Homepage flashCount={ flashcards.length } flashcards={ flashcards }/>)
     }
     else {
@@ -26,7 +27,7 @@ export default class App extends React.Component {
     const newFlashcard = [...this.state.flashcards]
     newFlashcard.push(flashcard)
     this.setState({flashcards: newFlashcard})
-    document.location.assign('http://localhost:3000/#cards')
+    location.hash = 'cards'
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
