@@ -4,6 +4,10 @@ const styles = {
   width: {
     width: '20rem',
     height: '12rem'
+  },
+  position: {
+    right: '1rem',
+    bottom: '1rem'
   }
 }
 
@@ -14,6 +18,7 @@ export default function RenderCard(props) {
         <div className="card-body">
           <h5 className="card-title">{flashcard.question}</h5>
           <p className="card-text">{flashcard.answer}.</p>
+          <a className="position-absolute" href="#cards" style={ styles.position }><i className="far fa-edit"></i></a>
         </div>
       </div>
     )

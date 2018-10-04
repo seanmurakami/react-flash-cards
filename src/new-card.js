@@ -57,7 +57,7 @@ export default class CreateCard extends React.Component {
               placeholder="Enter answer"></input>
           </div>
           <div className="d-flex justify-content-center">
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button type="submit" className="btn btn-primary btn-lg">Save</button>
           </div>
         </form>
       </div>
