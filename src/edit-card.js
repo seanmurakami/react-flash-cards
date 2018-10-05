@@ -1,4 +1,5 @@
 import React from 'react'
+import hash from './hash'
 
 const styles = {
   background: {
@@ -6,56 +7,43 @@ const styles = {
   }
 }
 
-export default class CreateCard extends React.Component {
+export default class EditCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      question: '',
-      answer: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSave = this.handleSave.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
-  handleSave(e) {
+  handleEdit(e) {
     e.preventDefault()
-    const { question, answer } = this.state
-    if (!question || !answer) {
-      alert('Please enter content in both fields')
+    const newValue = new FormData(e.target)
+    const editValues = {
+      question: newValue.get('question'),
+      answer: newValue.get('answer'),
+      id: hash.parse(location.hash).params.card
     }
-    else {
-      this.props.addCard(this.state)
-      this.setState({question: '', answer: ''})
-      e.target.reset()
-    }
-  }
-  handleChange(e) {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
+    this.props.editCard(editValues)
   }
   render() {
     return (
       <div className="d-flex justify-content-center">
         <form
-          onSubmit={ this.handleSave }
+          onSubmit={this.handleEdit}
           className="bg-light rounded mt-5 p-4"
           style={styles.background}>
-          <h2 className="d-flex justify-content-center">Create a Flash Card</h2>
+          <h2 className="d-flex justify-content-center">Edit Your Flash Card</h2>
           <div className="form-group">
             <label>Question</label>
             <input
-              onChange={ this.handleChange }
               name="question"
               className="form-control"
-              placeholder="Enter question"
+              defaultValue={this.props.question}
             />
           </div>
           <div className="form-group">
             <label>Answer</label>
             <input
-              onChange={ this.handleChange }
               name="answer"
               className="form-control"
-              placeholder="Enter answer"
+              defaultValue={this.props.answer}
             />
           </div>
           <div className="d-flex justify-content-center">

@@ -11,17 +11,28 @@ const styles = {
   }
 }
 
-export default function RenderCard(props) {
-  const updateCard = props.addCard.map((flashcard, index) => {
+export default class RenderCard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.findIndex = this.findIndex.bind(this)
+  }
+  findIndex(e) {
+    const selectedID = parseInt(e.target.id, 10)
+    this.props.lookup(selectedID)
+  }
+  render() {
     return (
-      <div key={ index } id={ index } className="card m-2" style={ styles.width }>
-        <div className="card-body">
-          <h5 className="card-title">{flashcard.question}</h5>
-          <p className="card-text">{flashcard.answer}.</p>
-          <a className="position-absolute" href="#cards" style={ styles.position }><i className="far fa-edit"></i></a>
-        </div>
-      </div>
-    )
-  })
-  return updateCard
+      this.props.addCard.map((flashcard, index) => {
+        return (
+          <div key={ index } className="card m-2" style={ styles.width }>
+            <div className="card-body">
+              <h5 className="card-title">{flashcard.question}</h5>
+              <p className="card-text">{flashcard.answer}.</p>
+              <a onClick={ this.findIndex } className="position-absolute" href={`#edit?card=${index}`} style={ styles.position }><i id={ index } className="far fa-edit fa-lg"></i></a>
+            </div>
+          </div>
+        )
+      }
+      ))
+  }
 }

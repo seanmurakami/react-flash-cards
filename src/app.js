@@ -3,27 +3,32 @@ import CreateCard from './new-card'
 import Navbar from './navbar'
 import Homepage from './home'
 import hash from './hash'
+import EditCard from './edit-card'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    const { path } = hash.parse(location.hash)
+    const { path, params } = hash.parse(location.hash)
     const getData = localStorage.getItem('flashcard-state')
     const appState = JSON.parse(getData) || {}
     this.state = {
       flashcards: appState.flashcards || [],
-      view: { path }
+      view: { path, params },
+      currentCard: null
     }
     this.addCard = this.addCard.bind(this)
+    this.editCard = this.editCard.bind(this)
+    this.findCard = this.findCard.bind(this)
   }
   renderApp() {
-    const { flashcards, view } = this.state
+    const { flashcards, view, currentCard } = this.state
     if (view.path === 'cards' || !view.path) {
-      return (<Homepage flashCount={ flashcards.length } flashcards={ flashcards }/>)
+      return (<Homepage lookup={ this.findCard } flashCount={ flashcards.length } flashcards={ flashcards }/>)
     }
-    else {
+    if (view.path === 'new') {
       return (<CreateCard addCard={ this.addCard }/>)
     }
+    return (<EditCard question={ flashcards[currentCard].question } answer={ flashcards[currentCard].answer } editCard= { this.editCard }/>)
   }
   addCard(flashcard) {
     const newFlashcard = [...this.state.flashcards]
@@ -31,11 +36,26 @@ export default class App extends React.Component {
     this.setState({flashcards: newFlashcard})
     location.hash = 'cards'
   }
+  editCard(flashcard) {
+    const newFlashcard = [...this.state.flashcards]
+    newFlashcard.map((item, i) => {
+      if (i === parseInt(flashcard.id, 10)) {
+        item.question = flashcard.question
+        item.answer = flashcard.answer
+        return item
+      }
+    })
+    this.setState({flashcards: newFlashcard})
+    location.hash = 'cards'
+  }
+  findCard(index) {
+    this.setState({currentCard: index})
+  }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
-      const { path } = hash.parse(location.hash)
+      const { path, params } = hash.parse(location.hash)
       this.setState({
-        view: { path }
+        view: { path, params }
       })
     })
     window.addEventListener('beforeunload', () => {

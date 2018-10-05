@@ -16,7 +16,7 @@ export default function Homepage(props) {
     return (
       <div className="mx-4">
         <div className="row">
-          <RenderCard addCard={props.flashcards} />
+          <RenderCard lookup={ props.lookup } addCard={props.flashcards} />
         </div>
       </div>
     )
