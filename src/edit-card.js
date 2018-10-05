@@ -17,7 +17,8 @@ export default class EditCard extends React.Component {
     const editedCard = new FormData(e.target)
     const card = {
       question: editedCard.get('question'),
-      answer: editedCard.get('answer')
+      answer: editedCard.get('answer'),
+      id: this.props.currentCard.id
     }
     this.props.updateCards(card)
   }
@@ -25,10 +26,10 @@ export default class EditCard extends React.Component {
     return (
       <div className="d-flex justify-content-center">
         <form
-          onSubmit={this.editCard}
+          onSubmit={ this.editCard }
           className="bg-light rounded mt-5 p-4"
           style={styles.background}>
-          <h2 className="d-flex justify-content-center">Edit Your Flash Card</h2>
+          <h2 className="d-flex justify-content-center">Edit Your Flashcard</h2>
           <div className="form-group">
             <label>Question</label>
             <input

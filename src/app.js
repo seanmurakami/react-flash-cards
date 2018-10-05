@@ -14,47 +14,55 @@ export default class App extends React.Component {
     this.state = {
       flashcards: appState.flashcards || [],
       view: { path, params },
-      currentCard: null
+      currentCard: null,
+      id: appState.id || 1
     }
     this.addCard = this.addCard.bind(this)
     this.updateCards = this.updateCards.bind(this)
   }
   renderApp() {
-    const { flashcards, view } = this.state
+    const { flashcards, view, currentCard } = this.state
     if (view.path === 'cards' || !view.path) {
-      return (<Homepage findcard={ this.state.count } flashCount={ flashcards.length } flashcards={ flashcards }/>)
+      return (<Homepage flashCount={ flashcards.length } flashcards={ flashcards }/>)
     }
     if (view.path === 'new') {
       return (<CreateCard addCard={ this.addCard }/>)
     }
-    return (<EditCard currentCard={ this.state.currentCard } updateCards={ this.updateCards }/>)
+    return (<EditCard currentCard={ currentCard } updateCards={ this.updateCards }/>)
   }
   addCard(flashcard) {
     const newFlashcard = [...this.state.flashcards]
+    flashcard.id = this.state.id
     newFlashcard.push(flashcard)
-    this.setState({flashcards: newFlashcard})
+    this.setState({flashcards: newFlashcard, id: this.state.id + 1})
     location.hash = 'cards'
   }
   updateCards(flashcard) {
-    const { params } = hash.parse(location.hash)
     const newFlashcard = [...this.state.flashcards]
-    newFlashcard[Object.values(params)[0]] = flashcard
-    this.setState({flashcards: newFlashcard})
+    const updatedCards = newFlashcard.map(item => {
+      if (parseInt(item.id, 10) === parseInt(flashcard.id, 10)) {
+        return flashcard
+      }
+      return item
+    })
+    this.setState({flashcards: updatedCards})
     location.hash = 'cards'
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
       const { path, params } = hash.parse(location.hash)
-      const newFlashcard = [...this.state.flashcards]
-      const selectedCard = newFlashcard[Object.values(params)[0]]
+      const { flashcards } = this.state
+      const currentCard = flashcards.find(flashcard =>
+        parseInt(flashcard.id, 10) === parseInt(params.card, 10)
+      )
       this.setState({
         view: { path, params },
-        currentCard: selectedCard
+        currentCard
       })
     })
     window.addEventListener('beforeunload', () => {
-      const { flashcards } = this.state
-      const JSONstate = JSON.stringify({flashcards})
+      const { flashcards, id } = this.state
+      const JSONstate = JSON.stringify({flashcards, id})
       localStorage.setItem('flashcard-state', JSONstate)
     })
   }
