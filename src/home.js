@@ -1,5 +1,5 @@
 import React from 'react'
-import RenderCard from './user-cards'
+import RenderCard from './render-cards'
 
 export default function Homepage(props) {
   if (props.flashCount === 0) {
@@ -16,7 +16,7 @@ export default function Homepage(props) {
     return (
       <div className="mx-4">
         <div className="row">
-          <RenderCard lookup={ props.lookup } addCard={props.flashcards} />
+          <RenderCard lookup={ props.findcard } showCards={ props.flashcards } />
         </div>
       </div>
     )

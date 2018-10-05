@@ -14,21 +14,17 @@ const styles = {
 export default class RenderCard extends React.Component {
   constructor(props) {
     super(props)
-    this.findIndex = this.findIndex.bind(this)
-  }
-  findIndex(e) {
-    const selectedID = parseInt(e.target.id, 10)
-    this.props.lookup(selectedID)
+    this.state = {}
   }
   render() {
     return (
-      this.props.addCard.map((flashcard, index) => {
+      this.props.showCards.map((flashcard, index) => {
         return (
           <div key={ index } className="card m-2" style={ styles.width }>
             <div className="card-body">
               <h5 className="card-title">{flashcard.question}</h5>
               <p className="card-text">{flashcard.answer}.</p>
-              <a onClick={ this.findIndex } className="position-absolute" href={`#edit?card=${index}`} style={ styles.position }><i id={ index } className="far fa-edit fa-lg"></i></a>
+              <a className="position-absolute" href={`#edit?card=${index}`} style={ styles.position }><i className="far fa-edit fa-lg"></i></a>
             </div>
           </div>
         )

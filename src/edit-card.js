@@ -1,5 +1,4 @@
 import React from 'react'
-import hash from './hash'
 
 const styles = {
   background: {
@@ -10,23 +9,23 @@ const styles = {
 export default class EditCard extends React.Component {
   constructor(props) {
     super(props)
-    this.handleEdit = this.handleEdit.bind(this)
+    this.state = {}
+    this.editCard = this.editCard.bind(this)
   }
-  handleEdit(e) {
+  editCard(e) {
     e.preventDefault()
-    const newValue = new FormData(e.target)
-    const editValues = {
-      question: newValue.get('question'),
-      answer: newValue.get('answer'),
-      id: hash.parse(location.hash).params.card
+    const editedCard = new FormData(e.target)
+    const card = {
+      question: editedCard.get('question'),
+      answer: editedCard.get('answer')
     }
-    this.props.editCard(editValues)
+    this.props.updateCards(card)
   }
   render() {
     return (
       <div className="d-flex justify-content-center">
         <form
-          onSubmit={this.handleEdit}
+          onSubmit={this.editCard}
           className="bg-light rounded mt-5 p-4"
           style={styles.background}>
           <h2 className="d-flex justify-content-center">Edit Your Flash Card</h2>
@@ -35,7 +34,7 @@ export default class EditCard extends React.Component {
             <input
               name="question"
               className="form-control"
-              defaultValue={this.props.question}
+              defaultValue={this.props.currentCard.question}
             />
           </div>
           <div className="form-group">
@@ -43,7 +42,7 @@ export default class EditCard extends React.Component {
             <input
               name="answer"
               className="form-control"
-              defaultValue={this.props.answer}
+              defaultValue={this.props.currentCard.answer}
             />
           </div>
           <div className="d-flex justify-content-center">

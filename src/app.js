@@ -17,18 +17,17 @@ export default class App extends React.Component {
       currentCard: null
     }
     this.addCard = this.addCard.bind(this)
-    this.editCard = this.editCard.bind(this)
-    this.findCard = this.findCard.bind(this)
+    this.updateCards = this.updateCards.bind(this)
   }
   renderApp() {
-    const { flashcards, view, currentCard } = this.state
+    const { flashcards, view } = this.state
     if (view.path === 'cards' || !view.path) {
-      return (<Homepage lookup={ this.findCard } flashCount={ flashcards.length } flashcards={ flashcards }/>)
+      return (<Homepage findcard={ this.state.count } flashCount={ flashcards.length } flashcards={ flashcards }/>)
     }
     if (view.path === 'new') {
       return (<CreateCard addCard={ this.addCard }/>)
     }
-    return (<EditCard question={ flashcards[currentCard].question } answer={ flashcards[currentCard].answer } editCard= { this.editCard }/>)
+    return (<EditCard currentCard={ this.state.currentCard } updateCards={ this.updateCards }/>)
   }
   addCard(flashcard) {
     const newFlashcard = [...this.state.flashcards]
@@ -36,26 +35,21 @@ export default class App extends React.Component {
     this.setState({flashcards: newFlashcard})
     location.hash = 'cards'
   }
-  editCard(flashcard) {
+  updateCards(flashcard) {
+    const { params } = hash.parse(location.hash)
     const newFlashcard = [...this.state.flashcards]
-    newFlashcard.map((item, i) => {
-      if (i === parseInt(flashcard.id, 10)) {
-        item.question = flashcard.question
-        item.answer = flashcard.answer
-        return item
-      }
-    })
+    newFlashcard[Object.values(params)[0]] = flashcard
     this.setState({flashcards: newFlashcard})
     location.hash = 'cards'
-  }
-  findCard(index) {
-    this.setState({currentCard: index})
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
       const { path, params } = hash.parse(location.hash)
+      const newFlashcard = [...this.state.flashcards]
+      const selectedCard = newFlashcard[Object.values(params)[0]]
       this.setState({
-        view: { path, params }
+        view: { path, params },
+        currentCard: selectedCard
       })
     })
     window.addEventListener('beforeunload', () => {

@@ -24,8 +24,6 @@ export default class CreateCard extends React.Component {
     }
     else {
       this.props.addCard(this.state)
-      this.setState({question: '', answer: ''})
-      e.target.reset()
     }
   }
   handleChange(e) {
