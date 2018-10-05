@@ -6,54 +6,44 @@ const styles = {
   }
 }
 
-export default class CreateCard extends React.Component {
+export default class EditCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      question: '',
-      answer: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSave = this.handleSave.bind(this)
+    this.state = {}
+    this.editCard = this.editCard.bind(this)
   }
-  handleSave(e) {
+  editCard(e) {
     e.preventDefault()
-    const { question, answer } = this.state
-    if (!question || !answer) {
-      alert('Please enter content in both fields')
+    const editedCard = new FormData(e.target)
+    const card = {
+      question: editedCard.get('question'),
+      answer: editedCard.get('answer'),
+      id: this.props.currentCard.id
     }
-    else {
-      this.props.addCard(this.state)
-    }
-  }
-  handleChange(e) {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
+    this.props.updateCards(card)
   }
   render() {
     return (
       <div className="d-flex justify-content-center">
         <form
-          onSubmit={ this.handleSave }
+          onSubmit={ this.editCard }
           className="bg-light rounded mt-5 p-4"
           style={styles.background}>
-          <h2 className="d-flex justify-content-center">Create a Flash Card</h2>
+          <h2 className="d-flex justify-content-center">Edit Your Flashcard</h2>
           <div className="form-group">
             <label>Question</label>
             <input
-              onChange={ this.handleChange }
               name="question"
               className="form-control"
-              placeholder="Enter question"
+              defaultValue={this.props.currentCard.question}
             />
           </div>
           <div className="form-group">
             <label>Answer</label>
             <input
-              onChange={ this.handleChange }
               name="answer"
               className="form-control"
-              placeholder="Enter answer"
+              defaultValue={this.props.currentCard.answer}
             />
           </div>
           <div className="d-flex justify-content-center">
