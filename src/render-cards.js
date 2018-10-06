@@ -27,6 +27,7 @@ export default function RenderCard(props) {
                 href={`#edit?card=${flashcard.id}`}
                 style={ styles.position }>
                 <i className="far fa-edit fa-lg"></i>
+                <i className="ml-2 fas fa-trash-alt fa-lg"></i>
               </a>
             </div>
           </div>
