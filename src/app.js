@@ -19,11 +19,12 @@ export default class App extends React.Component {
     }
     this.addCard = this.addCard.bind(this)
     this.updateCards = this.updateCards.bind(this)
+    this.removeCard = this.removeCard.bind(this)
   }
   renderApp() {
     const { flashcards, view, currentCard } = this.state
     if (view.path === 'cards' || !view.path) {
-      return (<Homepage flashCount={ flashcards.length } flashcards={ flashcards }/>)
+      return (<Homepage removeCard= { this.removeCard } flashCount={ flashcards.length } flashcards={ flashcards }/>)
     }
     if (view.path === 'new') {
       return (<CreateCard addCard={ this.addCard }/>)
@@ -47,6 +48,14 @@ export default class App extends React.Component {
     })
     this.setState({flashcards: updatedCards})
     location.hash = 'cards'
+  }
+  removeCard(e) {
+    const flashID = parseInt(e.target.id, 10)
+    const newFlashcard = [...this.state.flashcards]
+    const updatedCards = newFlashcard.filter(flashcard => {
+      return flashID !== flashcard.id
+    })
+    this.setState({flashcards: updatedCards})
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
