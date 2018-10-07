@@ -6,7 +6,7 @@ export default function Homepage(props) {
     return (
       <div className="container">
         <div className="text-center">
-          <h2 className="my-5">You have no flash cards</h2>
+          <h2 className="my-5">You have no flashcards</h2>
           <a href="#new" className="font-weight-light btn btn-primary btn-lg" >Make One</a>
         </div>
       </div>
