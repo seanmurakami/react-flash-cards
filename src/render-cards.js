@@ -5,7 +5,11 @@ const styles = {
     width: '20rem',
     height: '12rem'
   },
-  position: {
+  editPosition: {
+    right: '3rem',
+    bottom: '1rem'
+  },
+  trashPosition: {
     right: '1rem',
     bottom: '1rem'
   }
@@ -25,8 +29,15 @@ export default function RenderCard(props) {
               <a
                 className="position-absolute"
                 href={`#edit?card=${flashcard.id}`}
-                style={ styles.position }>
+                style={ styles.editPosition }>
                 <i className="far fa-edit fa-lg"></i>
+              </a>
+              <a
+                onClick={ props.removeCard }
+                className="position-absolute"
+                href={`#cards`}
+                style={ styles.trashPosition }>
+                <i id={ flashcard.id } className="fas fa-trash-alt fa-lg"></i>
               </a>
             </div>
           </div>
