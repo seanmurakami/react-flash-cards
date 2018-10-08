@@ -14,7 +14,7 @@ export default function Homepage(props) {
   }
   else {
     return (
-      <div className="mx-4">
+      <div className="ml-5">
         <div className="row">
           <RenderCard removeCard={ props.removeCard } showCards={ props.flashcards } />
         </div>
