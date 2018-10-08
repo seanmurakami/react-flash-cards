@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import ProgressBar from './progress-bar'
 
 const styles = {
   width: {
@@ -11,7 +12,10 @@ export default class Practice extends React.Component {
     super(props)
     this.state = {
       currentCard: 0,
-      showAnswer: false
+      showAnswer: false,
+      status: {
+        percentage: '0%'
+      }
     }
     this.showAnswer = this.showAnswer.bind(this)
     this.changeCard = this.changeCard.bind(this)
@@ -55,19 +59,22 @@ export default class Practice extends React.Component {
     const buttonDesc = showAnswer ? 'Hide Answer' : 'Show Answer'
     if (flashcards.length > 0) {
       return (
-        <div className="mt-5">
-          <div className="d-flex justify-content-center align-items-center">
-            <i onClick={ this.changeCard } id="previous" className="mr-2 fas fa-less-than fa-lg"></i>
-            <div className="card" style={ styles.width }>
-              <div className="card-body">
-                <h3 className="mb-0 card-title">{flashcards[currentCard].question}</h3>
-                <a onClick={this.showAnswer} href="#practice" className="my-3 btn btn-primary btn-sm">{ buttonDesc }</a>
-                <p className={`card-text ${answer}`}>{flashcards[currentCard].answer}</p>
+        <Fragment>
+          <ProgressBar percentage={ this.state.status }/>
+          <div className="mt-4">
+            <div className="d-flex justify-content-center align-items-center">
+              <i onClick={ this.changeCard } id="previous" className="mr-2 fas fa-less-than fa-lg"></i>
+              <div className="card" style={ styles.width }>
+                <div className="card-body">
+                  <h3 className="mb-0 card-title">{flashcards[currentCard].question}</h3>
+                  <a onClick={this.showAnswer} href="#practice" className="my-3 btn btn-primary btn-sm">{ buttonDesc }</a>
+                  <p className={`card-text ${answer}`}>{flashcards[currentCard].answer}</p>
+                </div>
               </div>
+              <i onClick={ this.changeCard } id="next" className="ml-2 fas fa-greater-than fa-lg"></i>
             </div>
-            <i onClick={ this.changeCard } id="next" className="ml-2 fas fa-greater-than fa-lg"></i>
           </div>
-        </div>
+        </Fragment>
       )
     }
     else {
