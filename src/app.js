@@ -4,6 +4,7 @@ import Navbar from './navbar'
 import Homepage from './home'
 import hash from './hash'
 import EditCard from './edit-card'
+import Practice from './practice'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,6 +29,9 @@ export default class App extends React.Component {
     }
     if (view.path === 'new') {
       return (<CreateCard addCard={ this.addCard }/>)
+    }
+    if (view.path === 'practice') {
+      return (<Practice flashcards={ this.state.flashcards }/>)
     }
     return (<EditCard currentCard={ currentCard } updateCards={ this.updateCards }/>)
   }

@@ -13,6 +13,7 @@ export default function Navbar() {
         <div className="navbar-nav" style={ styles.font }>
           <a className="nav-item nav-link" href="#cards">Cards</a>
           <a className="nav-item nav-link" href="#new">New</a>
+          <a className="nav-item nav-link" href="#practice">Practice</a>
         </div>
       </div>
     </nav>
