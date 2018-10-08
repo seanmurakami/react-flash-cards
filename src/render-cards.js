@@ -2,8 +2,7 @@ import React from 'react'
 
 const styles = {
   width: {
-    width: '20rem',
-    height: '12rem'
+    width: '28rem'
   },
   editPosition: {
     right: '3rem',
