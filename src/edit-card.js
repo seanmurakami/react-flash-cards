@@ -39,8 +39,9 @@ export default class EditCard extends React.Component {
           </div>
           <div className="form-group">
             <label>Answer</label>
-            <input
+            <textarea
               name="answer"
+              rows="4"
               className="form-control"
               defaultValue={this.props.currentCard.answer}
             />

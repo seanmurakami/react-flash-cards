@@ -14,7 +14,8 @@ const styles = {
   },
   scroll: {
     height: '9em',
-    overflow: 'auto'
+    overflow: 'auto',
+    whiteSpace: 'pre-wrap'
   }
 }
 

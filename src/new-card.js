@@ -49,9 +49,10 @@ export default class CreateCard extends React.Component {
           </div>
           <div className="form-group">
             <label>Answer</label>
-            <input
+            <textarea
               onChange={ this.handleChange }
               name="answer"
+              rows="4"
               className="form-control"
               placeholder="Enter answer"
             />

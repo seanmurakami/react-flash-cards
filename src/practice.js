@@ -4,6 +4,9 @@ import ProgressBar from './progress-bar'
 const styles = {
   width: {
     width: '48rem'
+  },
+  whitespace: {
+    whiteSpace: 'pre-wrap'
   }
 }
 
@@ -82,7 +85,7 @@ export default class Practice extends React.Component {
               <div className="card-body">
                 <h3 className="mb-0 card-title">{flashcards[currentCard].question}</h3>
                 <a onClick={this.showAnswer} href="#practice" className="my-3 btn btn-primary btn-sm">{ buttonDesc }</a>
-                <p className={`card-text ${answer}`}>{flashcards[currentCard].answer}</p>
+                <p style={ styles.whitespace } className={`card-text ${answer}`}>{flashcards[currentCard].answer}</p>
               </div>
             </div>
             <i onClick={ this.changeCard } id="next" className="ml-2 fas fa-greater-than fa-lg"></i>
