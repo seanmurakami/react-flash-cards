@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import ProgressBar from './progress-bar'
 
 const styles = {
   width: {
@@ -57,16 +58,14 @@ export default class Practice extends React.Component {
     }
   }
   calcNext(flashcard) {
-    const status = {
+    return {
       width: Math.round((flashcard + 1) / (this.props.flashcards.length) * 100) + '%'
     }
-    return status
   }
   calcPrevious(flashcard) {
-    const status = {
+    return {
       width: Math.round((flashcard - 1) / (this.props.flashcards.length) * 100) + '%'
     }
-    return status
   }
   render() {
     const { currentCard, showAnswer, status } = this.state
@@ -76,24 +75,17 @@ export default class Practice extends React.Component {
     if (flashcards.length > 0) {
       return (
         <Fragment>
-          <div className="mt-5 d-flex justify-content-center">
-            <div className="progress w-50">
-              <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style={ status }><span>{ status.width }</span>
+          <ProgressBar width={ status }/>
+          <div className="d-flex justify-content-center align-items-center">
+            <i onClick={ this.changeCard } id="previous" className="mr-2 fas fa-less-than fa-lg"></i>
+            <div className="card" style={ styles.width }>
+              <div className="card-body">
+                <h3 className="mb-0 card-title">{flashcards[currentCard].question}</h3>
+                <a onClick={this.showAnswer} href="#practice" className="my-3 btn btn-primary btn-sm">{ buttonDesc }</a>
+                <p className={`card-text ${answer}`}>{flashcards[currentCard].answer}</p>
               </div>
             </div>
-          </div>
-          <div className="mt-4">
-            <div className="d-flex justify-content-center align-items-center">
-              <i onClick={ this.changeCard } id="previous" className="mr-2 fas fa-less-than fa-lg"></i>
-              <div className="card" style={ styles.width }>
-                <div className="card-body">
-                  <h3 className="mb-0 card-title">{flashcards[currentCard].question}</h3>
-                  <a onClick={this.showAnswer} href="#practice" className="my-3 btn btn-primary btn-sm">{ buttonDesc }</a>
-                  <p className={`card-text ${answer}`}>{flashcards[currentCard].answer}</p>
-                </div>
-              </div>
-              <i onClick={ this.changeCard } id="next" className="ml-2 fas fa-greater-than fa-lg"></i>
-            </div>
+            <i onClick={ this.changeCard } id="next" className="ml-2 fas fa-greater-than fa-lg"></i>
           </div>
         </Fragment>
       )

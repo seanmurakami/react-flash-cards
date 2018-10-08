@@ -9,7 +9,6 @@ const styles = {
 export default class EditCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
     this.editCard = this.editCard.bind(this)
   }
   editCard(e) {

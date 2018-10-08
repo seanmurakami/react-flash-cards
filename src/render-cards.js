@@ -27,8 +27,8 @@ export default function RenderCard(props) {
             className="card m-2"
             style={ styles.dimensions }>
             <div className="card-body mb-4">
-              <h5 className="text-bold card-title"><strong>{flashcard.question}</strong></h5>
-              <p className="card-text" style={ styles.scroll }>{flashcard.answer}.</p>
+              <h6 className="font-weight-bold card-title">{flashcard.question}</h6>
+              <p className="font-weight-light card-text" style={ styles.scroll }>{flashcard.answer}.</p>
             </div>
             <a
               className="position-absolute"
