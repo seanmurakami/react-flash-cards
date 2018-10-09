@@ -9,7 +9,6 @@ const styles = {
 export default class EditCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
     this.editCard = this.editCard.bind(this)
   }
   editCard(e) {
@@ -40,8 +39,9 @@ export default class EditCard extends React.Component {
           </div>
           <div className="form-group">
             <label>Answer</label>
-            <input
+            <textarea
               name="answer"
+              rows="4"
               className="form-control"
               defaultValue={this.props.currentCard.answer}
             />

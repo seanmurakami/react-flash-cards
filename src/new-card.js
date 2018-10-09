@@ -35,7 +35,7 @@ export default class CreateCard extends React.Component {
       <div className="d-flex justify-content-center">
         <form
           onSubmit={ this.handleSave }
-          className="bg-light rounded mt-5 p-4"
+          className="bg-light rounded p-4"
           style={styles.background}>
           <h2 className="d-flex justify-content-center">Create a Flash Card</h2>
           <div className="form-group">
@@ -49,9 +49,10 @@ export default class CreateCard extends React.Component {
           </div>
           <div className="form-group">
             <label>Answer</label>
-            <input
+            <textarea
               onChange={ this.handleChange }
               name="answer"
+              rows="4"
               className="form-control"
               placeholder="Enter answer"
             />
