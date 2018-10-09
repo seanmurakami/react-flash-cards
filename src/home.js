@@ -14,8 +14,8 @@ export default function Homepage(props) {
   }
   else {
     return (
-      <div className="ml-5">
-        <div className="row">
+      <div>
+        <div className="d-flex justify-content-center row">
           <RenderCard removeCard={ props.removeCard } showCards={ props.flashcards } />
         </div>
       </div>

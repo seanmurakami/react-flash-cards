@@ -2,7 +2,7 @@ import React from 'react'
 
 const styles = {
   dimensions: {
-    width: '25rem'
+    width: '27rem'
   },
   editPosition: {
     right: '3rem',
@@ -25,10 +25,10 @@ export default function RenderCard(props) {
         return (
           <div
             key={ index }
-            className="card m-2"
+            className="card shadow-sm mx-3 mb-4"
             style={ styles.dimensions }>
             <div className="card-body mb-4">
-              <h6 className="font-weight-bold card-title">{flashcard.question}</h6>
+              <h6 className="font-weight-bold card-title">{flashcard.question}</h6><hr></hr>
               <p className="font-weight-light card-text" style={ styles.scroll }>{flashcard.answer}.</p>
             </div>
             <a
