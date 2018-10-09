@@ -81,7 +81,7 @@ export default class Practice extends React.Component {
           <ProgressBar width={ status }/>
           <div className="d-flex justify-content-center align-items-center">
             <i onClick={ this.changeCard } id="previous" className="mr-2 fas fa-less-than fa-lg"></i>
-            <div className="card" style={ styles.width }>
+            <div className="card shadow" style={ styles.width }>
               <div className="card-body">
                 <h3 className="mb-0 card-title">{flashcards[currentCard].question}</h3>
                 <a onClick={this.showAnswer} href="#practice" className="my-3 btn btn-primary btn-sm">{ buttonDesc }</a>
