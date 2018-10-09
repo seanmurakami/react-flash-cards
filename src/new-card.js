@@ -57,6 +57,20 @@ export default class CreateCard extends React.Component {
               placeholder="Enter answer"
             />
           </div>
+          <div className="form-group">
+            <label>Category</label>
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="basic-addon1">#</span>
+              </div>
+              <input
+                onChange={ this.handleChange }
+                name="category"
+                className="form-control"
+                placeholder="Enter category"
+              />
+            </div>
+          </div>
           <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-primary btn-lg">Save</button>
           </div>
