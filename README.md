@@ -4,10 +4,10 @@ A React.js application that allows users to document and solidify their knowledg
 #### [Live Demo](https://seanmurakami.github.io/react-flash-cards/)
 
 ### Create, view, edit, and remove flash cards.
-![flash-cards-crud](https://user-images.githubusercontent.com/38697885/48027476-b9999d00-e0fd-11e8-9831-5610f26511a3.gif)
+![flash-cards-crud](https://user-images.githubusercontent.com/38697885/48028435-5a895780-e100-11e8-8a40-2b63a2d68fa3.gif)
 
 ### Practice your cards and see your progress. 
-![flash-cards-practice](https://user-images.githubusercontent.com/38697885/48027525-e057d380-e0fd-11e8-8c65-05fe5129d737.gif)
+![flash-cards-practice](https://user-images.githubusercontent.com/38697885/48028576-b3f18680-e100-11e8-84de-fbebbc66626c.gif)
 
 ## Technologies
 - React.js
