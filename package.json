@@ -8,10 +8,6 @@
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/seanmurakami/react-flash-cards.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -33,10 +29,6 @@
       "git add"
     ]
   },
-  "bugs": {
-    "url": "https://github.com/seanmurakami/react-flash-cards/issues"
-  },
-  "homepage": "https://github.com/seanmurakami/react-flash-cards#readme",
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
