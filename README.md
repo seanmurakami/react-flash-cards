@@ -1,6 +1,11 @@
 # react-flash-cards
 A React.js application that allows users to document and solidify their knowledge using flashcards.
 
+#### [Live Demo](https://seanmurakami.github.io/react-flash-cards/)
+
+### Practice your cards and see your progress. 
+![flash-cards-practice]()
+
 ## Technologies
 - React.js
 - JavaScript
