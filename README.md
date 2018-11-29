@@ -15,6 +15,8 @@ A React.js application that allows users to document and solidify their knowledg
 - HTML5
 - CSS3
 - Bootstrap 4
+- Webpack
+- Babel
 
 ## Usage
 ```
