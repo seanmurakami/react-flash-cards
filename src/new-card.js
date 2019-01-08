@@ -11,7 +11,8 @@ export default class CreateCard extends React.Component {
     super(props)
     this.state = {
       question: '',
-      answer: ''
+      answer: '',
+      category: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSave = this.handleSave.bind(this)
