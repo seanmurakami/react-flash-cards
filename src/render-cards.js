@@ -16,6 +16,11 @@ const styles = {
     height: '9em',
     overflow: 'auto',
     whiteSpace: 'pre-wrap'
+  },
+  category: {
+    left: '1rem',
+    bottom: '0',
+    fontSize: '0.8rem'
   }
 }
 
@@ -30,6 +35,9 @@ export default function RenderCard(props) {
             <div className="card-body mb-4">
               <h6 className="font-weight-bold card-title">{flashcard.question}</h6><hr></hr>
               <p className="font-weight-light card-text" style={ styles.scroll }>{flashcard.answer}.</p>
+            </div>
+            <div>
+              <p className="position-absolute" style={ styles.category }>{`#${flashcard.category}`}</p>
             </div>
             <a
               className="position-absolute"
